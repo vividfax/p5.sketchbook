@@ -19,8 +19,7 @@ function draw() {
 
     book.onPage(0);
     book.value.radius--;
-    book.paper.ellipse(100, 100, 100);
-    book.paper.rect(book.value.radius, 100, 10);
+    book.paper.ellipse(100, 100, book.value.radius);
 
     book.onPage(1);
     book.value.radius++;
