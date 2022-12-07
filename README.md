@@ -1,6 +1,6 @@
 # p5.sketchbook
 
-Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas.
+Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas. Useful for sketch compliations and things like [Genuary](https://genuary.art/).
 
 ## How to use
 
@@ -31,7 +31,7 @@ Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas.
 
 ### Update and draw the current page
 
-Where book.onPage(n) updates and draws the nth page in the sketchbook. Pages will only update and draw when they are the active page.
+Where book.onPage(n) updates and draws the nth page in the sketchbook, only if it is the current page that's being shown.
 
     function draw() {
 
@@ -64,11 +64,12 @@ If you get to the end of the sketchbook it wraps around to the start.
 
 ## Useful functions
 
-### Draw a specific page
+### Show a specific page
 
-Where with viewPage(n), the nth page is drawn.
+Where with viewPage(n), the nth page is shown.
 
     book.viewPage(1);
+    book.draw();
 
 ### Get the number of pages in the sketchbook
 
@@ -80,6 +81,6 @@ Where with viewPage(n), the nth page is drawn.
 
 ## Credits
 
-p5.sketchbook was made by [Rianna Suen](https://vividfax.github.io), with [support from people like you!](https://patreon.com/vividfax)
+p5.sketchbook is a project by [Rianna Suen](https://vividfax.github.io), made with [support from people like you!](https://patreon.com/vividfax)
 
 If you're new to p5.js I've also written a primer on [learning how to code with p5.js](https://vividfax.notion.site/Learn-to-code-with-p5-js-8adbbbee0e7c400cbd590a8c883451f0).
