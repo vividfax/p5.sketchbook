@@ -31,5 +31,11 @@ function draw() {
 
 function mousePressed() {
 
-    book.next();
+    if (mouseButton === LEFT) {
+        book.next();
+    } else if (mouseButton === RIGHT) {
+        book.previous();
+    } else if (mouseButton === CENTER) {
+        book.reset();
+    }
 }

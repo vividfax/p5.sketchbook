@@ -63,6 +63,12 @@ Using mousePressed() as an example. To show the next or previous sketch:
 
 If you get to the end of the sketchbook it wraps around to the start.
 
+### Reset page to setup() state
+
+Resets the currently shown page's variables to their original state as written in the setup() function. Includes everything that was drawn prior to book.run().
+
+    book.reset();
+
 ## Useful functions
 
 ### Show a specific page
