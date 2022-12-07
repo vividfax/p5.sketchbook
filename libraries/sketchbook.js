@@ -1,6 +1,5 @@
-// p5.Sketchbook
-// by Rianna Suen
-// @vividfax
+// p5.sketchbook
+// by Rianna Suen @vividfax
 
 class Sketchbook {
 
@@ -22,9 +21,25 @@ class Sketchbook {
         image(this.papers[this.paperNumber].surface, 0, 0);
     }
 
-    length() {
+    getPage() {
+        return this.paperNumber;
+    }
 
+    length() {
         return this.papers.length;
+    }
+
+    load() {
+        this.value = {};
+    }
+
+    newPage(dimension) {
+
+        this.papers.push(new Page(dimension));
+        this.value = this.papers[this.length()-1].setup;
+
+        if (dimension == "3D") this.paper = this.papers[this.length()-1].surface;
+        else this.paper = this.papers[this.length()-1].backing;
     }
 
     next() {
@@ -36,26 +51,6 @@ class Sketchbook {
         this.update = this.papers[this.paperNumber].update;
 
         clear();
-    }
-
-    previous() {
-
-        this.paperNumber--;
-        if (this.paperNumber < 0) this.paperNumber = this.length()-1;
-
-        this.paper = this.papers[this.paperNumber].surface;
-        this.value = this.papers[this.paperNumber].update;
-
-        clear();
-    }
-
-    newPage(dimension) {
-
-        this.papers.push(new Page(dimension));
-        this.value = this.papers[this.length()-1].setup;
-
-        if (dimension == "3D") this.paper = this.papers[this.length()-1].surface;
-        else this.paper = this.papers[this.length()-1].backing;
     }
 
     onPage(n) {
@@ -77,20 +72,21 @@ class Sketchbook {
         }
     }
 
-    viewPage(n) {
+    previous() {
 
-        if (typeof n != "number") return;
+        this.paperNumber--;
+        if (this.paperNumber < 0) this.paperNumber = this.length()-1;
 
-        if (this.papers[n] instanceof Page) {
-            this.paperNumber = n;
-            this.paper = this.papers[this.paperNumber].surface;
-            this.value = this.papers[this.paperNumber].update;
-        }
+        this.paper = this.papers[this.paperNumber].surface;
+        this.value = this.papers[this.paperNumber].update;
+
+        clear();
     }
 
-    getPage() {
+    reset() {
 
-        return this.paperNumber;
+        this.papers[this.paperNumber].reset();
+        this.papers[this.paperNumber].clear();
     }
 
     run() {
@@ -103,15 +99,15 @@ class Sketchbook {
         }
     }
 
-    reset() {
+    viewPage(n) {
 
-        this.papers[this.paperNumber].reset();
-        this.papers[this.paperNumber].clear();
-    }
+        if (typeof n != "number") return;
 
-    load() {
-
-        this.value = {};
+        if (this.papers[n] instanceof Page) {
+            this.paperNumber = n;
+            this.paper = this.papers[this.paperNumber].surface;
+            this.value = this.papers[this.paperNumber].update;
+        }
     }
 }
 
@@ -132,13 +128,11 @@ class Page {
         this.update = {};
     }
 
-    reset() {
-
-        this.update = Object.assign({}, this.setup);
+    clear() {
+        this.surface.clear();
     }
 
-    clear() {
-
-        this.surface.clear();
+    reset() {
+        this.update = Object.assign({}, this.setup);
     }
 }
