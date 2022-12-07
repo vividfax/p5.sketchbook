@@ -1,5 +1,6 @@
 // p5.sketchbook
 // by Rianna Suen @vividfax
+// https://vividfax.github.io
 
 class Sketchbook {
 
