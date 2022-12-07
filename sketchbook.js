@@ -9,8 +9,6 @@ class Sketchbook {
         this.papers = [];
         this.paperNumber = 0;
 
-        // this.newPage(dimension);
-
         this.junk = createGraphics(1, 1);
         this.junk3D = createGraphics(1, 1, WEBGL);
     }
