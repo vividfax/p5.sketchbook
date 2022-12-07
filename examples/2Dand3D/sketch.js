@@ -46,4 +46,4 @@ function keyPressed() {
     } else if (keyCode === ENTER) {
         book.reset();
     }
-  }
+}
