@@ -4,9 +4,10 @@ Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas. Us
 
 ## How to use
 
-### Include it in the .html
+### Include in the .html
 
     <head>
+        <script src="libraries/p5.min.js"></script>
         <script src="libraries/sketchbook.js"></script>
     </head>
 
