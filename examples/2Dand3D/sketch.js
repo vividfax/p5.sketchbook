@@ -1,3 +1,5 @@
+// https://editor.p5js.org/vividfax/sketches/_90HBjAcd
+
 let book;
 
 function setup() {
@@ -17,25 +19,31 @@ function setup() {
 
 function draw() {
 
-    book.onPage(0);
-    book.value.radius--;
-    book.paper.ellipse(100, 100, book.value.radius);
+    let currentPageIndex = book.getPage();
 
-    book.onPage(1);
-    book.value.radius++;
-    book.paper.background("#2E4057");
-    book.paper.sphere(book.value.radius);
+    if (currentPageIndex == 0) {
+        book.onPage(0);
+        book.value.radius--;
+        book.paper.ellipse(100, 100, book.value.radius);
+
+    } else if (currentPageIndex == 1) {
+        book.onPage(1);
+        book.value.radius++;
+        book.paper.clear();
+        book.paper.background("#2E4057");
+        book.paper.sphere(book.value.radius);
+    }
 
     book.draw();
 }
 
-function mousePressed() {
+function keyPressed() {
 
-    if (mouseButton === LEFT) {
-        book.next();
-    } else if (mouseButton === RIGHT) {
+    if (keyCode === LEFT_ARROW) {
         book.previous();
-    } else if (mouseButton === CENTER) {
+    } else if (keyCode === RIGHT_ARROW) {
+        book.next();
+    } else if (keyCode === ENTER) {
         book.reset();
     }
-}
+  }

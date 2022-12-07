@@ -19,6 +19,8 @@ Copy sketchbook.js into the libraries directory and include it in the .html.
 
 In the setup() function, set up initial variables and everything that only gets drawn once, as usual. Don't forget to call book.run() lastly.
 
+Each time book.newPage() is called it sets up a seperate variable instance. So book.value.radius will be different values for each page.
+
     let book;
 
     function setup() {
@@ -38,31 +40,37 @@ In the setup() function, set up initial variables and everything that only gets 
 
 ### Update and draw the current page
 
-Update variables and draw shapes in the draw() loop. Where book.onPage(n) updates and draws the nth page in the sketchbook, only if it is the current page that's being shown.
+Update variables and draw shapes in the draw() loop. Where book.onPage(n) updates and draws the nth page in the sketchbook.
 
     function draw() {
 
-        book.onPage(0);
-        book.value.radius--;
-        book.paper.ellipse(100, 100, book.value.radius);
+        let currentPageIndex = book.getPage();
 
-        book.onPage(1);
-        book.value.radius++;
-        book.paper.background("#2E4057");
-        book.paper.sphere(book.value.radius);
+        if (currentPageIndex == 0) {
+            book.onPage(0);
+            book.value.radius--;
+            book.paper.ellipse(100, 100, book.value.radius);
+
+        } else if (currentPageIndex == 1) {
+            book.onPage(1);
+            book.value.radius++;
+            book.paper.clear();
+            book.paper.background("#2E4057");
+            book.paper.sphere(book.value.radius);
+        }
 
         book.draw();
     }
 
 ### Change pages
 
-Using mousePressed() as an example. To show the next or previous sketch:
+Using keyPressed() as an example. To show the next or previous sketch:
 
-    function mousePressed() {
+    function keyPressed() {
 
-        if (mouseButton == LEFT) {
+        if (keyCode === LEFT_ARROW) {
             book.previous();
-        } else if (mouseButton == RIGHT) {
+        } else if (keyCode === RIGHT_ARROW) {
             book.next();
         }
     }
@@ -71,9 +79,9 @@ If you get to the end of the sketchbook it wraps around to the start.
 
 ### Reset page to setup() state
 
-Resets the currently shown page's variables to their original state as written in the setup() function. Includes everything that was drawn prior to book.run(). Again, using mousePressed() as an example.
+Resets the currently shown page's variables to their original state as written in the setup() function. Includes everything that was drawn prior to book.run(). Again, using keyPressed() as an example.
 
-    function mousePressed() {
+    function keyPressed() {
 
         book.reset();
     }
@@ -93,7 +101,7 @@ Where with viewPage(n), the nth page is shown.
 
 ### Get the index of the current page
 
-    let index = book.getPage();
+    let currentPageIndex = book.getPage();
 
 ## Credits
 

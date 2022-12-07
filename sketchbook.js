@@ -11,8 +11,8 @@ class Sketchbook {
 
         // this.newPage(dimension);
 
-        this.junk = createGraphics(width, height);
-        this.junk3D = createGraphics(width, height, WEBGL);
+        this.junk = createGraphics(1, 1);
+        this.junk3D = createGraphics(1, 1, WEBGL);
     }
 
     draw() {
