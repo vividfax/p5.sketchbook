@@ -19,7 +19,7 @@ Copy sketchbook.js into the libraries directory and include it in the .html.
 
 In the setup() function, set up initial variables and everything that only gets drawn once, as usual. Don't forget to call book.run() lastly.
 
-Each time book.newPage() is called it sets up a seperate variable instance. So book.value.radius will be different values for each page.
+Each time book.newPage() is called it sets up a separate variable instance. So book.value.radius will be different values for each page.
 
     let book;
 
