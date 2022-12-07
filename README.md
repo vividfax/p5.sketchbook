@@ -1,6 +1,6 @@
 # p5.sketchbook
 
-Create and manage multiple p5.js sketches in one canvas.
+Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas.
 
 ## How to use
 
@@ -10,7 +10,7 @@ Create and manage multiple p5.js sketches in one canvas.
         <script src="libraries/sketchbook.js"></script>
     </head>
 
-### Setup pages
+### Set up pages
 
     let book;
 
@@ -49,16 +49,15 @@ Where book.onPage(n) updates and draws the nth page in the sketchbook. Pages wil
 
 ### Change pages
 
-Using mousePressed() as an example. To show the next sketch:
+Using mousePressed() as an example. To show the next or previous sketch:
 
     function mousePressed() {
-        book.next();
-    }
 
- To show the previous sketch:
-
-    function mousePressed() {
-        book.previous();
+        if (mouseButton == LEFT) {
+            book.previous();
+        } else if (mouseButton == RIGHT) {
+            book.next();
+        }
     }
 
 If you get to the end of the sketchbook it wraps around to the start.
@@ -82,3 +81,5 @@ Where with viewPage(n), the nth page is drawn.
 ## Credits
 
 p5.sketchbook was made by [Rianna Suen](https://vividfax.github.io), with [support from people like you!](https://patreon.com/vividfax)
+
+If you're new to p5.js I've also written a primer on [learning how to code with p5.js](https://vividfax.notion.site/Learn-to-code-with-p5-js-8adbbbee0e7c400cbd590a8c883451f0).
