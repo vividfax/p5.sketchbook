@@ -2,6 +2,8 @@
 
 Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas. Useful for sketch compliations and things like [Genuary](https://genuary.art/).
 
+Each page in the sketchbook has its own variables and it's easy to flip between the pages.
+
 ## How to use
 
 ### Include in the .html
