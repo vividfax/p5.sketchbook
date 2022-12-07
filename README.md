@@ -21,7 +21,7 @@ Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas. Us
 
         book.newPage();
         book.value.radius = 200;
-        book.paper.background("#cccccc");
+        book.paper.background("#66A182");
 
         book.newPage("3D");
         book.value.radius = 0;
@@ -41,7 +41,7 @@ Where book.onPage(n) updates and draws the nth page in the sketchbook, only if i
 
         book.onPage(1);
         book.value.radius++;
-        book.paper.background("#oaoaoa");
+        book.paper.background("#2E4057");
         book.paper.sphere(book.value.radius);
 
         book.draw();

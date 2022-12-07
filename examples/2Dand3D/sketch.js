@@ -7,7 +7,7 @@ function setup() {
 
     book.newPage();
     book.value.radius = 200;
-    book.paper.background(0, 100, 0);
+    book.paper.background("#66A182");
 
     book.newPage("3D");
     book.value.radius = 0;
@@ -24,7 +24,7 @@ function draw() {
 
     book.onPage(1);
     book.value.radius++;
-    book.paper.background(0, 0, 225);
+    book.paper.background("#2E4057");
     book.paper.sphere(book.value.radius);
 
     book.draw();
