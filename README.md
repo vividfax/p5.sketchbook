@@ -34,6 +34,7 @@ Each time book.newPage() is called it sets up a separate variable instance. So b
 
         book.newPage("3D");
         book.value.radius = 0;
+        book.value.backgroundColour = "#2E4057";
 
         book.run();
     }
@@ -55,7 +56,7 @@ Update variables and draw shapes in the draw() loop. Where book.onPage(n) update
             book.onPage(1);
             book.value.radius++;
             book.paper.clear();
-            book.paper.background("#2E4057");
+            book.paper.background(book.value.backgroundColour);
             book.paper.sphere(book.value.radius);
         }
 

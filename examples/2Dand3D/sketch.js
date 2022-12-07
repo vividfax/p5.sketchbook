@@ -13,6 +13,7 @@ function setup() {
 
     book.newPage("3D");
     book.value.radius = 0;
+    book.value.backgroundColour = "#2E4057";
 
     book.run();
 }
@@ -30,7 +31,7 @@ function draw() {
         book.onPage(1);
         book.value.radius++;
         book.paper.clear();
-        book.paper.background("#2E4057");
+        book.paper.background(book.value.backgroundColour);
         book.paper.sphere(book.value.radius);
     }
 
