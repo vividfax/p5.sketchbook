@@ -6,12 +6,16 @@ Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas. Us
 
 ### Include in the .html
 
+Copy sketchbook.js into the libraries directory and include it in the .html.
+
     <head>
         <script src="libraries/p5.min.js"></script>
         <script src="libraries/sketchbook.js"></script>
     </head>
 
 ### Set up pages
+
+In the setup() function, set up initial variables and everything that only gets drawn once, as usual. Don't forget to call book.run() lastly.
 
     let book;
 
@@ -32,7 +36,7 @@ Create and manage multiple [p5.js](https://p5js.org/) sketches in one canvas. Us
 
 ### Update and draw the current page
 
-Where book.onPage(n) updates and draws the nth page in the sketchbook, only if it is the current page that's being shown.
+Update variables and draw shapes in the draw() loop. Where book.onPage(n) updates and draws the nth page in the sketchbook, only if it is the current page that's being shown.
 
     function draw() {
 
@@ -65,9 +69,12 @@ If you get to the end of the sketchbook it wraps around to the start.
 
 ### Reset page to setup() state
 
-Resets the currently shown page's variables to their original state as written in the setup() function. Includes everything that was drawn prior to book.run().
+Resets the currently shown page's variables to their original state as written in the setup() function. Includes everything that was drawn prior to book.run(). Again, using mousePressed() as an example.
 
-    book.reset();
+    function mousePressed() {
+
+        book.reset();
+    }
 
 ## Useful functions
 
