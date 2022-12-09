@@ -104,6 +104,10 @@ Where with viewPage(n), the nth page is shown.
 
     let currentPageIndex = book.getPage();
 
+## Examples
+
+- [2D and 3D](https://editor.p5js.org/vividfax/sketches/_90HBjAcd)
+
 ## Credits
 
 p5.sketchbook is a project by [Rianna Suen](https://vividfax.github.io), made with [support from people like you!](https://patreon.com/vividfax)
