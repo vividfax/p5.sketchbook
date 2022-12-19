@@ -6,48 +6,48 @@ class Sketchbook {
 
     constructor(dimension) {
 
-        _this.pages = [];
-        _this.pageNumber = 0;
+        this.pages = [];
+        this.pageNumber = 0;
 
-        _this.junk = createGraphics(1, 1);
-        _this.junk3d = createGraphics(1, 1, WEBGL);
+        this.junk = createGraphics(1, 1);
+        this.junk3d = createGraphics(1, 1, WEBGL);
     }
 
     draw() {
 
-        if (_this.pages[_this.pageNumber].dimension != "3D") image(_this.pages[_this.pageNumber].backing, 0, 0);
+        if (this.pages[this.pageNumber].dimension != "3D") image(this.pages[this.pageNumber].backing, 0, 0);
 
-        image(_this.pages[_this.pageNumber].surface, 0, 0);
+        image(this.pages[this.pageNumber].surface, 0, 0);
     }
 
     getPage() {
-        return _this.pageNumber;
+        return this.pageNumber;
     }
 
     length() {
-        return _this.pages.length;
+        return this.pages.length;
     }
 
     load() {
-        _this.value = {};
+        this.value = {};
     }
 
     newPage(dimension) {
 
-        _this.pages.push(new Page(dimension));
-        _this.value = _this.pages[this.length()-1].setup;
+        this.pages.push(new Page(dimension));
+        this.value = this.pages[this.length()-1].setup;
 
-        if (dimension == "3D") _this.paper = _this.pages[this.length()-1].surface;
-        else _this.paper = _this.pages[this.length()-1].backing;
+        if (dimension == "3D") this.paper = this.pages[this.length()-1].surface;
+        else this.paper = this.pages[this.length()-1].backing;
     }
 
     next() {
 
-        _this.pageNumber++;
-        if (_this.pageNumber >= this.length()) _this.pageNumber = 0;
+        this.pageNumber++;
+        if (this.pageNumber >= this.length()) this.pageNumber = 0;
 
-        _this.paper = _this.pages[_this.pageNumber].surface;
-        _this.update = _this.pages[_this.pageNumber].update;
+        this.paper = this.pages[this.pageNumber].surface;
+        this.update = this.pages[this.pageNumber].update;
 
         clear();
     }
@@ -56,45 +56,45 @@ class Sketchbook {
 
         if (typeof n != "number") return;
 
-        if (_this.pages[n] instanceof Page) {
+        if (this.pages[n] instanceof Page) {
 
-            if (_this.pages[n].dimension == "3D") _this.paper = _this.junk3d;
-            else _this.paper = _this.junk;
-            _this.value = {};
+            if (this.pages[n].dimension == "3D") this.paper = this.junk3d;
+            else this.paper = this.junk;
+            this.value = {};
         }
 
-        if (_this.pageNumber != n) return;
+        if (this.pageNumber != n) return;
 
-        if (_this.pages[n] instanceof Page) {
-            _this.paper = _this.pages[n].surface;
-            _this.value = _this.pages[n].update;
+        if (this.pages[n] instanceof Page) {
+            this.paper = this.pages[n].surface;
+            this.value = this.pages[n].update;
         }
     }
 
     previous() {
 
-        _this.pageNumber--;
-        if (_this.pageNumber < 0) _this.pageNumber = this.length()-1;
+        this.pageNumber--;
+        if (this.pageNumber < 0) this.pageNumber = this.length()-1;
 
-        _this.paper = _this.pages[_this.pageNumber].surface;
-        _this.value = _this.pages[_this.pageNumber].update;
+        this.paper = this.pages[this.pageNumber].surface;
+        this.value = this.pages[this.pageNumber].update;
 
         clear();
     }
 
     reset() {
 
-        _this.pages[_this.pageNumber].reset();
-        _this.pages[_this.pageNumber].clear();
+        this.pages[this.pageNumber].reset();
+        this.pages[this.pageNumber].clear();
     }
 
     run() {
 
-        _this.pageNumber = 0;
+        this.pageNumber = 0;
 
         for (let i = 0; i < this.length(); i++) {
 
-            _this.pages[i].reset();
+            this.pages[i].reset();
         }
     }
 
@@ -102,10 +102,10 @@ class Sketchbook {
 
         if (typeof n != "number") return;
 
-        if (_this.pages[n] instanceof Page) {
-            _this.pageNumber = n;
-            _this.paper = _this.pages[_this.pageNumber].surface;
-            _this.value = _this.pages[_this.pageNumber].update;
+        if (this.pages[n] instanceof Page) {
+            this.pageNumber = n;
+            this.paper = this.pages[this.pageNumber].surface;
+            this.value = this.pages[this.pageNumber].update;
         }
     }
 }
@@ -124,7 +124,7 @@ class Page {
         }
 
         this.setup = {};
-        _this.update = {};
+        this.update = {};
     }
 
     clear() {
@@ -132,6 +132,6 @@ class Page {
     }
 
     reset() {
-        _this.update = Object.assign({}, this.setup);
+        this.update = Object.assign({}, this.setup);
     }
 }
