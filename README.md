@@ -29,7 +29,7 @@ Each time book.newPage() is called it sets up a separate variable instance. So b
         book = new Sketchbook();
 
         book.newPage();
-        book.value.radius = 200;
+        book.value.radius = 20;
         book.paper.background("#66A182");
 
         book.newPage("3D");
@@ -49,8 +49,7 @@ Update variables and draw shapes in the draw() loop. Where book.onPage(n) update
 
         if (currentPageIndex == 0) {
             book.onPage(0);
-            book.value.radius--;
-            book.paper.ellipse(100, 100, book.value.radius);
+            book.paper.ellipse(random(width), random(height), book.value.radius);
 
         } else if (currentPageIndex == 1) {
             book.onPage(1);
